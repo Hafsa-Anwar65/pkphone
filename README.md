@@ -38,6 +38,15 @@ pkphone --csv leads.csv --column phone --out leads_clean.csv
 
 The CSV mode adds `phone_clean` and `phone_valid` columns.
 
+## Docker (GitHub Packages)
+
+```bash
+docker run --rm ghcr.io/hafsa-anwar65/pkphone 0300-1234567 021-34567890
+docker run --rm -v "$PWD:/data" ghcr.io/hafsa-anwar65/pkphone --csv leads.csv --column phone --out leads_clean.csv
+```
+
+A new image is published automatically whenever a `v*` tag is pushed.
+
 ## Notes
 
 - Operator is based on the original prefix; ported numbers (MNP) may differ.
