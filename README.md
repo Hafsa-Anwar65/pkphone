@@ -105,53 +105,25 @@ flowchart LR
     F -- No --> X
     G --> O["e164 · local · whatsapp"]
     H --> O
+    classDef base fill:#F8FAFC,stroke:#CBD5E1,stroke-width:1px,color:#334155
+    classDef accent fill:#EEF2FF,stroke:#6366F1,stroke-width:1.5px,color:#3730A3
+    classDef check fill:#FFFBEB,stroke:#F59E0B,stroke-width:1.5px,color:#92400E
+    classDef ok fill:#ECFDF5,stroke:#10B981,stroke-width:1.5px,color:#065F46
+    classDef bad fill:#FFF1F2,stroke:#F43F5E,stroke-width:1.5px,color:#9F1239
+    class A,B,C base
+    class D,E,F check
+    class G,H ok
+    class X bad
+    class O accent
 ```
 
 ### Output formats
 
-| Format | Example | Typical use |
-| :--- | :--- | :--- |
-| `e164` (default) | `+923001234567` | Databases, APIs, deduplication |
-| `local` | `0300-1234567` | Displaying numbers to people |
-| `whatsapp` | `923001234567` | `https://wa.me/` links |
+<p align="center"><img src="assets/formats.svg" alt="Output formats: e164 (default) +923001234567, local 0300-1234567, whatsapp 923001234567" width="100%"></p>
 
 ### Supported numbers
 
-<table>
-  <tr>
-    <th align="left" width="50%">Mobile operators</th>
-    <th align="left" width="50%">Landline area codes</th>
-  </tr>
-  <tr>
-    <td valign="top">
-
-| Prefix | Operator |
-| :--- | :--- |
-| `030x`, `032x` | Jazz |
-| `031x` | Zong |
-| `033x` | Ufone |
-| `034x` | Telenor |
-| `035x` | SCOM |
-
-</td>
-    <td valign="top">
-
-| Code | City |
-| :--- | :--- |
-| `021` | Karachi |
-| `042` | Lahore |
-| `051` | Islamabad / Rawalpindi |
-| `041` | Faisalabad |
-| `061` | Multan |
-| `091` | Peshawar |
-| `081` | Quetta |
-| `022` | Hyderabad |
-| `052` | Sialkot |
-| `055` | Gujranwala |
-
-</td>
-  </tr>
-</table>
+<p align="center"><img src="assets/numbers.svg" alt="Mobile operators: 030x/032x Jazz, 031x Zong, 033x Ufone, 034x Telenor, 035x SCOM. Landline codes: 021 Karachi, 042 Lahore, 051 Islamabad/Rawalpindi, 041 Faisalabad, 061 Multan, 091 Peshawar, 081 Quetta, 022 Hyderabad, 052 Sialkot, 055 Gujranwala" width="100%"></p>
 
 Other area codes are accepted with a general length check.
 
@@ -160,14 +132,10 @@ Other area codes are accepted with a general length check.
 ## Command Line
 
 ```bash
-pkphone 0300-1234567 "+92 21 34567890" 12345
+pkphone 0300-1234567 "+92 21 34567890" "0345 1112223" 12345
 ```
 
-```text
-'0300-1234567'           -> +923001234567    mobile    Jazz
-'+92 21 34567890'        -> +922134567890    landline  Karachi
-'12345'                  -> invalid
-```
+<p align="center"><img src="assets/cli.svg" alt="Terminal output of pkphone showing three valid numbers and one invalid" width="100%"></p>
 
 ### Cleaning a CSV file
 
@@ -175,11 +143,7 @@ pkphone 0300-1234567 "+92 21 34567890" 12345
 pkphone --csv leads.csv --column phone --out leads_clean.csv
 ```
 
-```mermaid
-%%{init: {'theme': 'neutral'}}%%
-flowchart LR
-    A["leads.csv"] --> B["pkphone --csv"] --> C["leads_clean.csv<br/>+ phone_clean<br/>+ phone_valid"]
-```
+<p align="center"><img src="assets/csv.svg" alt="leads.csv cleaned into leads_clean.csv with phone_clean and phone_valid columns" width="100%"></p>
 
 | Option | Default | Description |
 | :--- | :--- | :--- |
@@ -263,7 +227,7 @@ pkphone/
 ├── .github/workflows/
 │   ├── tests.yml            Runs tests on every push
 │   └── docker-publish.yml   Publishes the Docker image on tags
-├── assets/header.svg
+├── assets/                README images
 ├── Dockerfile
 ├── pyproject.toml
 ├── LICENSE
@@ -280,6 +244,14 @@ flowchart LR
     A["git push"] --> B["tests.yml<br/>Python 3.9 · 3.11 · 3.12"]
     T["git tag v*"] --> B
     T --> C["docker-publish.yml"] --> D["ghcr.io/hafsa-anwar65/pkphone"]
+    classDef base fill:#F8FAFC,stroke:#CBD5E1,stroke-width:1px,color:#334155
+    classDef accent fill:#EEF2FF,stroke:#6366F1,stroke-width:1.5px,color:#3730A3
+    classDef check fill:#FFFBEB,stroke:#F59E0B,stroke-width:1.5px,color:#92400E
+    classDef ok fill:#ECFDF5,stroke:#10B981,stroke-width:1.5px,color:#065F46
+    classDef bad fill:#FFF1F2,stroke:#F43F5E,stroke-width:1.5px,color:#9F1239
+    class A,T base
+    class B,C check
+    class D ok
 ```
 
 <br>
