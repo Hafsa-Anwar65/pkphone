@@ -1,86 +1,81 @@
-<div align="center">
+<p align="center">
+  <img src="assets/header.svg" alt="pkphone — Clean, validate and normalize Pakistani phone numbers" width="100%">
+</p>
 
-# 📞 pkphone
+<p align="center">
+  <a href="https://github.com/Hafsa-Anwar65/pkphone/actions/workflows/tests.yml"><img src="https://img.shields.io/github/actions/workflow/status/Hafsa-Anwar65/pkphone/tests.yml?style=flat-square&label=tests&labelColor=1F2937" alt="Tests"></a>
+  <a href="https://github.com/Hafsa-Anwar65/pkphone/actions/workflows/docker-publish.yml"><img src="https://img.shields.io/github/actions/workflow/status/Hafsa-Anwar65/pkphone/docker-publish.yml?style=flat-square&label=docker&labelColor=1F2937" alt="Docker"></a>
+  <img src="https://img.shields.io/badge/python-3.9%2B-4B5563?style=flat-square&labelColor=1F2937" alt="Python 3.9+">
+  <a href="https://github.com/Hafsa-Anwar65/pkphone/pkgs/container/pkphone"><img src="https://img.shields.io/badge/ghcr.io-pkphone-4B5563?style=flat-square&labelColor=1F2937" alt="GitHub Container Registry"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-4B5563?style=flat-square&labelColor=1F2937" alt="MIT License"></a>
+</p>
 
-### Clean, validate & normalize **Pakistani phone numbers** in one line
+<p align="center">
+  <a href="#overview">Overview</a> &nbsp;·&nbsp;
+  <a href="#installation">Installation</a> &nbsp;·&nbsp;
+  <a href="#quick-start">Quick Start</a> &nbsp;·&nbsp;
+  <a href="#how-it-works">How It Works</a> &nbsp;·&nbsp;
+  <a href="#command-line">CLI</a> &nbsp;·&nbsp;
+  <a href="#docker">Docker</a> &nbsp;·&nbsp;
+  <a href="#api-reference">API</a> &nbsp;·&nbsp;
+  <a href="#license">License</a>
+</p>
 
-[![Tests](https://github.com/Hafsa-Anwar65/pkphone/actions/workflows/tests.yml/badge.svg)](https://github.com/Hafsa-Anwar65/pkphone/actions/workflows/tests.yml)
-[![Docker](https://github.com/Hafsa-Anwar65/pkphone/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/Hafsa-Anwar65/pkphone/actions/workflows/docker-publish.yml)
-[![Python](https://img.shields.io/badge/python-3.9%20%7C%203.11%20%7C%203.12-3776AB?logo=python&logoColor=white)](https://www.python.org/)
-[![GHCR](https://img.shields.io/badge/ghcr.io-pkphone-2496ED?logo=docker&logoColor=white)](https://github.com/Hafsa-Anwar65/pkphone/pkgs/container/pkphone)
-[![License: MIT](https://img.shields.io/badge/license-MIT-22C55E.svg)](LICENSE)
-[![Made in Pakistan](https://img.shields.io/badge/made%20in-Pakistan%20🇵🇰-01411C)](#)
-
-**`0300-1234567` · `+92 300 1234567` · `923001234567` · `(0300) 123 4567`**
 <br>
-⬇️
-<br>
-**`+923001234567`**
 
-[Features](#-features) • [Installation](#-installation) • [Quick Start](#-quick-start) • [How It Works](#-how-it-works) • [CLI](#-command-line) • [Docker](#-docker) • [API](#-api-reference)
+## Overview
 
-</div>
+The same Pakistani phone number is written in many different ways, especially in leads collected from Google Maps, Facebook, websites and CRM exports. This leads to duplicate records, broken WhatsApp links and invalid numbers in your data.
 
----
-
-## 🤔 Why pkphone?
-
-The same Pakistani number gets written in many different ways — especially in leads scraped from Google Maps, Facebook, websites or CRM exports. That causes **duplicate leads**, **broken WhatsApp links** and **invalid numbers** slipping into your data.
-
-`pkphone` fixes all of that with a single function call.
-
-> [!TIP]
-> Built for lead-generation and data-cleaning pipelines: normalize once, dedupe everywhere.
-
----
-
-## ✨ Features
+**pkphone** converts any common format into one consistent, validated number with a single function call.
 
 <table>
-<tr>
-<td width="50%">
-
-🧹 **Normalize** any common format to E.164, local or WhatsApp style
-
-✅ **Validate** mobile and landline numbers
-
-📡 **Detect operator** — Jazz, Zong, Ufone, Telenor, SCOM
-
-</td>
-<td width="50%">
-
-🏙️ **Detect city** for major landline area codes
-
-🔍 **Extract** every number from free text, deduplicated
-
-📄 **Clean whole CSV files** from the command line
-
-</td>
-</tr>
+  <tr>
+    <th align="left" width="33%">Normalize</th>
+    <th align="left" width="33%">Validate</th>
+    <th align="left" width="33%">Identify</th>
+  </tr>
+  <tr>
+    <td valign="top">Convert any common format to E.164, local or WhatsApp style.</td>
+    <td valign="top">Reject numbers with a wrong length, prefix or area code.</td>
+    <td valign="top">Detect mobile operator, or city for landline numbers.</td>
+  </tr>
+  <tr>
+    <th align="left">Extract</th>
+    <th align="left">Clean CSV files</th>
+    <th align="left">Run anywhere</th>
+  </tr>
+  <tr>
+    <td valign="top">Find every number inside free text, with duplicates removed.</td>
+    <td valign="top">Add clean and valid columns to a whole CSV from the command line.</td>
+    <td valign="top">Use as a Python library, a CLI tool or a Docker image.</td>
+  </tr>
 </table>
 
----
+<br>
 
-## 📦 Installation
+## Installation
 
 | Method | Command |
 | :--- | :--- |
-| 🐍 **pip (from GitHub)** | `pip install git+https://github.com/Hafsa-Anwar65/pkphone.git` |
-| 📌 **Pinned version** | `pip install git+https://github.com/Hafsa-Anwar65/pkphone.git@v0.1.0` |
-| 📝 **requirements.txt** | `pkphone @ git+https://github.com/Hafsa-Anwar65/pkphone.git@v0.1.0` |
-| 🐳 **Docker** | `docker pull ghcr.io/hafsa-anwar65/pkphone:latest` |
-| 🛠️ **Local development** | `git clone https://github.com/Hafsa-Anwar65/pkphone.git && cd pkphone && pip install -e .` |
+| pip (from GitHub) | `pip install git+https://github.com/Hafsa-Anwar65/pkphone.git` |
+| Pinned version | `pip install git+https://github.com/Hafsa-Anwar65/pkphone.git@v0.1.0` |
+| requirements.txt | `pkphone @ git+https://github.com/Hafsa-Anwar65/pkphone.git@v0.1.0` |
+| Docker | `docker pull ghcr.io/hafsa-anwar65/pkphone:latest` |
 
----
+> [!NOTE]
+> Requires Python 3.9 or newer. pkphone has no third-party dependencies.
 
-## 🚀 Quick Start
+<br>
+
+## Quick Start
 
 ```python
 from pkphone import parse, normalize, is_valid, extract_all
 
 normalize("0300-1234567")              # '+923001234567'
 normalize("+92 300 1234567", "local")  # '0300-1234567'
-normalize("03001234567", "whatsapp")   # '923001234567'  -> https://wa.me/923001234567
+normalize("03001234567", "whatsapp")   # '923001234567'
 
 p = parse("021-34567890")
 p.kind, p.city                         # ('landline', 'Karachi')
@@ -92,58 +87,57 @@ extract_all("Call 0300-1234567 or office 021-34567890")
 # [PhoneNumber(+923001234567), PhoneNumber(+922134567890)]
 ```
 
----
+<br>
 
-## ⚙️ How It Works
+## How It Works
 
 ```mermaid
+%%{init: {'theme': 'neutral'}}%%
 flowchart LR
-    A["📥 Raw input<br/>0300-1234567<br/>+92 300 1234567"]:::input --> B["🧹 Strip spaces,<br/>dashes, brackets"]:::step
-    B --> C["✂️ Remove +92 / 0092 / 0"]:::step
-    C --> D{"Starts with 3?"}:::decision
-    D -- Yes --> E{"10 digits &<br/>known prefix?"}:::decision
-    D -- No --> F{"Valid area code<br/>& length?"}:::decision
-    E -- Yes --> G["📱 Mobile<br/>+ operator"]:::ok
-    F -- Yes --> H["☎️ Landline<br/>+ city"]:::ok
-    E -- No --> X["❌ Invalid → None"]:::bad
+    A["Raw input"] --> B["Remove spaces,<br/>dashes, brackets"]
+    B --> C["Remove +92 / 0092 / 0"]
+    C --> D{"Starts with 3?"}
+    D -- Yes --> E{"10 digits and<br/>known prefix?"}
+    D -- No --> F{"Valid area code<br/>and length?"}
+    E -- Yes --> G["Mobile + operator"]
+    F -- Yes --> H["Landline + city"]
+    E -- No --> X["Invalid: None"]
     F -- No --> X
-    G --> O["📤 e164 · local · whatsapp"]:::output
+    G --> O["e164 · local · whatsapp"]
     H --> O
-
-    classDef input fill:#DBEAFE,stroke:#2563EB,stroke-width:2px,color:#1E3A8A
-    classDef step fill:#EDE9FE,stroke:#7C3AED,stroke-width:2px,color:#4C1D95
-    classDef decision fill:#FEF3C7,stroke:#D97706,stroke-width:2px,color:#78350F
-    classDef ok fill:#DCFCE7,stroke:#16A34A,stroke-width:2px,color:#14532D
-    classDef bad fill:#FEE2E2,stroke:#DC2626,stroke-width:2px,color:#7F1D1D
-    classDef output fill:#CCFBF1,stroke:#0D9488,stroke-width:2px,color:#134E4A
 ```
 
----
+### Output formats
 
-## 🗺️ Supported Numbers
+| Format | Example | Typical use |
+| :--- | :--- | :--- |
+| `e164` (default) | `+923001234567` | Databases, APIs, deduplication |
+| `local` | `0300-1234567` | Displaying numbers to people |
+| `whatsapp` | `923001234567` | `https://wa.me/` links |
+
+### Supported numbers
 
 <table>
-<tr>
-<th>📡 Mobile operators</th>
-<th>🏙️ Landline cities</th>
-</tr>
-<tr>
-<td valign="top">
+  <tr>
+    <th align="left" width="50%">Mobile operators</th>
+    <th align="left" width="50%">Landline area codes</th>
+  </tr>
+  <tr>
+    <td valign="top">
 
 | Prefix | Operator |
-| :---: | :--- |
-| `030x` | Jazz |
-| `032x` | Jazz |
+| :--- | :--- |
+| `030x`, `032x` | Jazz |
 | `031x` | Zong |
 | `033x` | Ufone |
 | `034x` | Telenor |
 | `035x` | SCOM |
 
 </td>
-<td valign="top">
+    <td valign="top">
 
 | Code | City |
-| :---: | :--- |
+| :--- | :--- |
 | `021` | Karachi |
 | `042` | Lahore |
 | `051` | Islamabad / Rawalpindi |
@@ -156,22 +150,14 @@ flowchart LR
 | `055` | Gujranwala |
 
 </td>
-</tr>
+  </tr>
 </table>
 
 Other area codes are accepted with a general length check.
 
-### Output formats
+<br>
 
-| Format | Example | Use it for |
-| :--- | :--- | :--- |
-| `e164` *(default)* | `+923001234567` | Databases, APIs, deduplication |
-| `local` | `0300-1234567` | Showing numbers to people |
-| `whatsapp` | `923001234567` | `https://wa.me/` links |
-
----
-
-## 💻 Command Line
+## Command Line
 
 ```bash
 pkphone 0300-1234567 "+92 21 34567890" 12345
@@ -183,78 +169,78 @@ pkphone 0300-1234567 "+92 21 34567890" 12345
 '12345'                  -> invalid
 ```
 
-### Clean a whole CSV
+### Cleaning a CSV file
 
 ```bash
 pkphone --csv leads.csv --column phone --out leads_clean.csv
 ```
 
 ```mermaid
+%%{init: {'theme': 'neutral'}}%%
 flowchart LR
-    A["📄 leads.csv"]:::file --> B["⚙️ pkphone --csv"]:::step --> C["✨ leads_clean.csv<br/>+ phone_clean<br/>+ phone_valid"]:::ok
-
-    classDef file fill:#DBEAFE,stroke:#2563EB,stroke-width:2px,color:#1E3A8A
-    classDef step fill:#EDE9FE,stroke:#7C3AED,stroke-width:2px,color:#4C1D95
-    classDef ok fill:#DCFCE7,stroke:#16A34A,stroke-width:2px,color:#14532D
+    A["leads.csv"] --> B["pkphone --csv"] --> C["leads_clean.csv<br/>+ phone_clean<br/>+ phone_valid"]
 ```
 
 | Option | Default | Description |
-| :--- | :---: | :--- |
-| `--format`, `-f` | `e164` | `e164`, `local` or `whatsapp` |
-| `--csv` | — | CSV file to clean |
-| `--column` | `phone` | Column holding the numbers |
-| `--out` | stdout | Output CSV path |
+| :--- | :--- | :--- |
+| `--format`, `-f` | `e164` | Output format: `e164`, `local` or `whatsapp` |
+| `--csv` | | CSV file to clean |
+| `--column` | `phone` | Column that holds the numbers |
+| `--out` | stdout | Path of the output CSV |
 
----
+<br>
 
-## 🐳 Docker
+## Docker
 
-Published automatically to **GitHub Packages** on every version tag.
+A Docker image is published to GitHub Packages automatically for every version tag.
 
-**Linux / macOS**
+<table>
+  <tr>
+    <th align="left">Linux / macOS</th>
+  </tr>
+  <tr>
+    <td>
+
 ```bash
-docker run --rm ghcr.io/hafsa-anwar65/pkphone 0300-1234567 021-34567890
-docker run --rm -v "$PWD:/data" ghcr.io/hafsa-anwar65/pkphone --csv leads.csv --column phone --out leads_clean.csv
+docker run --rm ghcr.io/hafsa-anwar65/pkphone 0300-1234567
+docker run --rm -v "$PWD:/data" ghcr.io/hafsa-anwar65/pkphone --csv leads.csv --column phone
 ```
 
-**Windows PowerShell**
+</td>
+  </tr>
+  <tr>
+    <th align="left">Windows PowerShell</th>
+  </tr>
+  <tr>
+    <td>
+
 ```powershell
-docker run --rm -v "${PWD}:/data" ghcr.io/hafsa-anwar65/pkphone --csv leads.csv --column phone --out leads_clean.csv
+docker run --rm ghcr.io/hafsa-anwar65/pkphone 0300-1234567
+docker run --rm -v "${PWD}:/data" ghcr.io/hafsa-anwar65/pkphone --csv leads.csv --column phone
 ```
 
----
+</td>
+  </tr>
+</table>
 
-## 📚 API Reference
+<br>
 
-| Function / property | Returns | Description |
+## API Reference
+
+| Function or property | Returns | Description |
 | :--- | :--- | :--- |
 | `parse(raw)` | `PhoneNumber` or `None` | Parse and validate a number |
-| `normalize(raw, fmt="e164")` | `str` or `None` | Return the number in a given format |
-| `is_valid(raw)` | `bool` | `True` if it is a valid Pakistani number |
-| `extract_all(text)` | `list[PhoneNumber]` | Find all numbers in text, deduplicated |
+| `normalize(raw, fmt="e164")` | `str` or `None` | Return the number in the given format |
+| `is_valid(raw)` | `bool` | `True` if the number is a valid Pakistani number |
+| `extract_all(text)` | `list[PhoneNumber]` | All numbers found in the text, deduplicated |
 | `PhoneNumber.kind` | `str` | `"mobile"` or `"landline"` |
 | `PhoneNumber.operator` | `str` or `None` | Mobile operator |
 | `PhoneNumber.city` | `str` or `None` | Landline city |
-| `PhoneNumber.e164` / `.local` / `.whatsapp` | `str` | Formatted versions |
+| `PhoneNumber.e164`, `.local`, `.whatsapp` | `str` | Formatted versions of the number |
 
----
+<br>
 
-## 🔄 Release Pipeline
-
-```mermaid
-flowchart LR
-    A["👩‍💻 git push"]:::dev --> B["🧪 tests.yml<br/>Python 3.9 · 3.11 · 3.12"]:::ci
-    T["🏷️ git tag v*"]:::dev --> B
-    T --> C["🐳 docker-publish.yml"]:::ci --> D["📦 ghcr.io/hafsa-anwar65/pkphone"]:::ok
-
-    classDef dev fill:#FCE7F3,stroke:#DB2777,stroke-width:2px,color:#831843
-    classDef ci fill:#FEF3C7,stroke:#D97706,stroke-width:2px,color:#78350F
-    classDef ok fill:#DCFCE7,stroke:#16A34A,stroke-width:2px,color:#14532D
-```
-
----
-
-## 🧪 Development
+## Development
 
 ```bash
 git clone https://github.com/Hafsa-Anwar65/pkphone.git
@@ -264,19 +250,20 @@ pytest
 ```
 
 <details>
-<summary>📁 <b>Project structure</b></summary>
+<summary><b>Project structure</b></summary>
 
 ```text
 pkphone/
 ├── src/pkphone/
-│   ├── __init__.py      # public API
-│   ├── core.py          # parsing & validation logic
-│   └── cli.py           # command line tool
+│   ├── __init__.py          Public API
+│   ├── core.py              Parsing and validation
+│   └── cli.py               Command line tool
 ├── tests/
 │   └── test_core.py
 ├── .github/workflows/
-│   ├── tests.yml           # runs tests on every push
-│   └── docker-publish.yml  # publishes Docker image on tags
+│   ├── tests.yml            Runs tests on every push
+│   └── docker-publish.yml   Publishes the Docker image on tags
+├── assets/header.svg
 ├── Dockerfile
 ├── pyproject.toml
 ├── LICENSE
@@ -285,34 +272,55 @@ pkphone/
 
 </details>
 
----
+### Release process
 
-## ⚠️ Limitations
-
-> [!NOTE]
-> The operator is detected from the number's original prefix. Numbers ported to another network (MNP) may show their original operator.
-
-> [!NOTE]
-> Landline lengths are checked strictly for the cities listed above; other area codes get a general length check.
-
----
-
-## 🤝 Contributing
-
-Issues and pull requests are welcome! To add a new city or operator, update the tables in `src/pkphone/core.py` and add a test in `tests/test_core.py`.
-
----
-
-## 📄 License
-
-Released under the [MIT License](LICENSE) © 2026 Hafsa Anwar.
-
-<div align="center">
+```mermaid
+%%{init: {'theme': 'neutral'}}%%
+flowchart LR
+    A["git push"] --> B["tests.yml<br/>Python 3.9 · 3.11 · 3.12"]
+    T["git tag v*"] --> B
+    T --> C["docker-publish.yml"] --> D["ghcr.io/hafsa-anwar65/pkphone"]
+```
 
 <br>
 
-**Made with 💚 in Pakistan by [Hafsa Anwar](https://github.com/Hafsa-Anwar65)**
+## Limitations
 
-⭐ If this saved you time, give the repo a star!
+> [!IMPORTANT]
+> The operator is detected from the number's original prefix. Numbers moved to another network through mobile number portability may show their original operator.
 
-</div>
+> [!NOTE]
+> Landline lengths are checked strictly for the cities listed above. Other area codes receive a general length check.
+
+<br>
+
+## Contributing
+
+Issues and pull requests are welcome. To add a city or operator, update the tables in `src/pkphone/core.py` and add a matching test in `tests/test_core.py`.
+
+<br>
+
+## License
+
+pkphone is released under the **MIT License**. See the [LICENSE](LICENSE) file for the full text.
+
+<table>
+  <tr>
+    <th align="left" width="33%">Permissions</th>
+    <th align="left" width="33%">Conditions</th>
+    <th align="left" width="33%">Limitations</th>
+  </tr>
+  <tr>
+    <td valign="top">Commercial use<br>Modification<br>Distribution<br>Private use</td>
+    <td valign="top">Include the copyright notice and license text in all copies</td>
+    <td valign="top">No liability<br>No warranty</td>
+  </tr>
+</table>
+
+<br>
+
+---
+
+<p align="center">
+  <sub>Developed by <a href="https://github.com/Hafsa-Anwar65">Hafsa Anwar</a> · Copyright © 2026 · MIT License</sub>
+</p>
